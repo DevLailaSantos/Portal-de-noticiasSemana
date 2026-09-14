@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DronoAgro - Tecnologia de Precisão no Campo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Arquivo CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 transition-colors duration-300">
+
+    <!-- Barra de Acessibilidade -->
+    <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <span class="font-medium tracking-wide flex items-center gap-1.5"><i class="fa-solid fa-universal-access text-emerald-400"></i> ACESSIBILIDADE:</span>
+            <div class="flex items-center gap-3 flex-wrap">
+                <button onclick="ativarVLibras()" class="hover:text-emerald-400 transition-colors cursor-pointer">VLibras Ativar</button>
+                <span class="text-slate-600">|</span>
+                <button onclick="alternarAltoContraste()" class="hover:text-emerald-400 transition-colors cursor-pointer">Alto Contraste</button>
+                <span class="text-slate-600">|</span>
+                <button onclick="ajustarFonte('aumentar')" class="hover:text-emerald-400 transition-colors cursor-pointer font-bold">A+</button>
+                <button onclick="ajustarFonte('diminuir')" class="hover:text-emerald-400 transition-colors cursor-pointer font-bold">A-</button>
+                <span class="text-slate-600">|</span>
+                <button onclick="alternarModoAutismo()" class="hover:text-emerald-400 transition-colors cursor-pointer">Modo Autismo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabeçalho / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-drone text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black tracking-tight text-slate-900">Drono<span class="text-emerald-600">Agro</span></h1>
+                    <p class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Tecnologia de Precisão</p>
+                </div>
+            </div>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm text-slate-600">
+                <a href="#inicio" class="text-emerald-600 font-semibold hover:text-emerald-700 transition">Início</a>
+                <a href="#noticias" class="hover:text-emerald-600 transition">Notícias</a>
+                <a href="#cursos" class="hover:text-emerald-600 transition">Cursos</a>
+                <a href="#curiosidades" class="hover:text-emerald-600 transition">Curiosidades</a>
+                <a href="#tecnologias" class="hover:text-emerald-600 transition">Tecnologias</a>
+                <a href="#contato" class="bg-emerald-600 text-white px-4 py-2 rounded-lg shadow hover:bg-emerald-700 transition">Fale Conosco</a>
+            </nav>
+
+            <!-- Botão Menu Mobile -->
+            <button id="btn-menu" class="md:hidden text-slate-700 text-xl focus:outline-none cursor-pointer">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="menu-mobile" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-2 pb-4 space-y-2">
+            <a href="#inicio" class="block py-2 text-emerald-600 font-semibold">Início</a>
+            <a href="#noticias" class="block py-2 text-slate-600">Notícias</a>
+            <a href="#cursos" class="block py-2 text-slate-600">Cursos</a>
+            <a href="#curiosidades" class="block py-2 text-slate-600">Curiosidades</a>
+            <a href="#tecnologias" class="block py-2 text-slate-600">Tecnologias</a>
+            <a href="#contato" class="block py-2 text-emerald-600 font-semibold">Fale Conosco</a>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section id="inicio" class="relative bg-slate-900 text-white py-20 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="inline-block bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-emerald-500/30">
+                    Plataforma 100% Digital e Gratuita
+                </span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                    Tecnologia no Campo com <span class="text-emerald-400">Drones Agrícolas</span>
+                </h2>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    Cursos gratuitos, notícias atualizadas, curiosidades do setor e tudo sobre agricultura de precisão para revolucionar a sua produção rural.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#cursos" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition flex items-center gap-2">
+                        <span>Explorar Cursos</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#noticias" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium px-6 py-3 rounded-xl transition">
+                        Ver Últimas Notícias
+                    </a>
+                </div>
+            </div>
+            <div class="bg-slate-800/80 border border-slate-700 p-8 rounded-2xl shadow-2xl backdrop-blur">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="text-xs uppercase font-bold text-emerald-400 tracking-wider">Capacitação Profissional</span>
+                    <i class="fa-solid fa-graduation-cap text-2xl text-emerald-400"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Cursos Grátis Presencial e EAD</h3>
+                <p class="text-slate-400 text-sm mb-6">Aprenda com especialistas as principais metodologias e operações de drones agrícolas no Brasil.</p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 bg-slate-900/60 p-3 rounded-lg border border-slate-700/50">
+                        <i class="fa-solid fa-check-circle text-emerald-400"></i>
+                        <span class="text-sm font-medium">Mapeamento Aéreo Automatizado</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-900/60 p-3 rounded-lg border border-slate-700/50">
+                        <i class="fa-solid fa-check-circle text-emerald-400"></i>
+                        <span class="text-sm font-medium">Pulverização de Alta Precisão</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Cursos / Capacitação -->
+    <section id="cursos" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+                <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Capacitação Profissional</span>
+                <h2 class="text-3xl font-black text-slate-900 mt-1">Cursos Gratuitos</h2>
+            </div>
+            <a href="#cursos" onclick="alert('Lista completa de cursos carregada com sucesso!')" class="text-emerald-600 font-bold hover:text-emerald-700 flex items-center gap-2 text-sm">
+                <span>Ver Todos os Cursos</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+                <div>
+                    <div class="bg-emerald-50 text-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-emerald-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-map"></i>
+                    </div>
+                    <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">Mapeamento</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Mapeamento Aéreo com Drones</h3>
+                    <p class="text-slate-600 text-sm">Aprenda a fazer mapas de alta precisão, processar imagens e identificar falhas de plantio de forma automatizada.</p>
+                </div>
+                <button onclick="abrirModalCurso('Mapeamento Aéreo com Drones')" class="mt-6 text-emerald-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition cursor-pointer">
+                    <span>Saiba Mais</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+                <div>
+                    <div class="bg-emerald-50 text-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-emerald-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-cloud-rain"></i>
+                    </div>
+                    <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">Pulverização</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Pulverização Agrícola de Precisão</h3>
+                    <p class="text-slate-600 text-sm">Entenda o funcionamento dos drones pulverizadores, calibração de bicos, cálculo de vazão e normas de segurança.</p>
+                </div>
+                <button onclick="abrirModalCurso('Pulverização Agrícola de Precisão')" class="mt-6 text-emerald-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition cursor-pointer">
+                    <span>Saiba Mais</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+                <div>
+                    <div class="bg-emerald-50 text-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-emerald-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">Operação</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Operação de Drones no Campo</h3>
+                    <p class="text-slate-600 text-sm">Domine a pilotagem de drones em cenários complexos, planejamento de rotas de voo e plano de contingência.</p>
+                </div>
+                <button onclick="abrirModalCurso('Operação de Drones no Campo')" class="mt-6 text-emerald-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition cursor-pointer">
+                    <span>Saiba Mais</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+                <div>
+                    <div class="bg-emerald-50 text-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-emerald-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">Análise</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Análise de Solo com Imagens Aéreas</h3>
+                    <p class="text-slate-600 text-sm">Aprenda a obter índices de vegetação como NDVI, NDRE e otimize o uso de fertilizantes no solo.</p>
+                </div>
+                <button onclick="abrirModalCurso('Análise de Solo com Imagens Aéreas')" class="mt-6 text-emerald-600 font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition cursor-pointer">
+                    <span>Saiba Mais</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Notícias Automatizada -->
+    <section id="noticias" class="bg-slate-100 py-20 px-4 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl mb-12">
+                <span class="text-emerald-600 font-bold text-xs uppercase tracking-widest">Inovação & Setor</span>
+                <h2 class="text-3xl font-black text-slate-900 mt-1">Últimas Notícias</h2>
+                <p class="text-slate-600 mt-2">Fique por dentro das novidades, avanços tecnológicos e mudanças na legislação brasileira para operação aeroagrícola.</p>
+            </div>
+
+            <!-- CONTAINER DINÂMICO PARA AS NOTÍCIAS AUTOMÁTICAS DO MUNDOGEO -->
+            <div id="container-noticias" class="grid md:grid-cols-3 gap-8">
+                <!-- Estado de carregamento inicial -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center col-span-3 text-slate-500">
+                    <i class="fa-solid fa-spinner fa-spin text-emerald-600 text-3xl mb-3"></i>
+                    <p class="text-sm font-medium">Carregando notícias em tempo real do MundoGEO...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Anúncio / Banner -->
+    <section class="py-16 px-4 bg-emerald-700 text-white text-center">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <span class="bg-emerald-800 text-emerald-200 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-emerald-600">Parceria Comercial</span>
+            <h2 class="text-3xl font-black">Divulgue aqui sua empresa!</h2>
+            <p class="text-emerald-100 max-w-2xl mx-auto">Entre em contato conosco para anunciar seus produtos, drones e serviços especializados para milhares de produtores rurais e pilotos de drone em todo o país.</p>
+            <a href="#contato" class="inline-block bg-white text-emerald-800 font-bold px-8 py-3 rounded-xl shadow-lg hover:bg-slate-100 transition mt-2">Anuncie Conosco</a>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato" class="bg-slate-900 text-slate-400 py-12 px-4 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-600 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-drone"></i>
+                </div>
+                <span class="text-xl font-bold text-white">Drono<span class="text-emerald-500">Agro</span></span>
+            </div>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="https://instagram.com" target="_blank" class="hover:text-emerald-400 transition flex items-center gap-2">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    <span>@GynDrone.Agro</span>
+                </a>
+            </div>
+            <p class="text-xs text-slate-500 text-center md:text-right">
+                &copy; 2026 GYN DRONEAGRO - Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Dinâmico -->
+    <div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl font-bold cursor-pointer">&times;</button>
+            <h3 id="modal-titulo" class="text-2xl font-black text-slate-900 mb-3">Título</h3>
+            <p id="modal-texto" class="text-slate-600 text-sm leading-relaxed mb-6">Conteúdo detalhado...</p>
+            <button onclick="fecharModal()" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl hover:bg-emerald-700 transition cursor-pointer">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Arquivo JS Externo -->
+    <script src="script.js"></script>
+</body>
+</html>

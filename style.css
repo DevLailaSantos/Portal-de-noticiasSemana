@@ -1,0 +1,41 @@
+/* Estilos personalizados complementares ao Tailwind */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Modo Alto Contraste */
+body.high-contrast {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+}
+
+body.high-contrast header,
+body.high-contrast section,
+body.high-contrast div,
+body.high-contrast article,
+body.high-contrast footer {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
+}
+
+body.high-contrast a, 
+body.high-contrast button {
+    color: #ffff00 !important;
+    border: 1px solid #ffff00 !important;
+}
+
+/* Modo Autismo / Conforto Visual */
+body.autism-mode {
+    background-color: #f4f6f8 !important;
+    color: #2c3e50 !important;
+}
+
+body.autism-mode * {
+    letter-spacing: 0.05em !important;
+    line-height: 1.8 !important;
+}
